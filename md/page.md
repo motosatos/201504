@@ -1,67 +1,46 @@
-## MarkdownとReveal.js
-###で簡単スライド作成
-by [@yshimizu0617](https://twitter.com/yshimizu0617)
+## 第3章　コンポーネント設計のアイデア
 
 ---
 
-## スライド作り…
+1. CSSにおけるコンポーネント設計
+2. OOCSS
+3. BEM
+
+---
+
+### 3-1 CSSにおけるコンポーネント設計 
 
 --
 
-##めんどくさい！
++ コンポーネントとは
+ - 部品だ。目的は部品化することで機能や振る舞いなどを明確に分離する
 
 --
 
-##Office2013…？
-<br>
-###なんかUI全然違うよ…？
++ カプセル化
+ - コンポーネントの構造やデータを隠し、外部からは許可された操作のみを受付、また内部の仕様変更が外部に影響しないようにするといったこと 
+  - 分離が成立
+  - メンテアップ、再利用性アップ
+ - しかし、、
 
 --
 
-##Keynote…？
-###会社はWinだって＼(^o^)／
++ CSSにはカプセル化の概念がない
+ - 容易に他への影響が出る
++ コンポーネント設計が難しいCSSだが、アイデアがある
+ - OOCSS 
+
+---
+
+### 3-2. OOCSS(Object Oriented CSS)
 
 --
 
-#ということで。。。
-###スライドもMarkdownで作りたい！
++ OOCSSの原則
+ - 構造と見た目の分離
+ - コンテナーとコンテンツを分離
 
----
-
-#Markdown
-#&
-#Reveal.js
-
----
-
-#やり方
-
----
-
-* GitHubから[reveal.js](https://github.com/hakimel/reveal.js/)のzipをGET
-* index.htmlをテキストエディタで開く。
-* `<div class="slides">`タグ内の`<section>`内容を削除
-* 次のページのオプション付き`<section>`を記載する
-* `<section>`内にMarkdownでゴリゴリ書く
-
-<br>
-###これだけ！！
-
----
-
-###Markdown用のsection定義。
-`---`を入れることで右に次のページを作成。<br>
-`--`を入れることで下に次のページを作成。
-
-```html
-<section data-markdown
-	data-separator="\n---\n$"
-	data-vertical="\n--\n">
-	<script type="text/template">
-	< / script>
-</section>
-```
-
+--
 
 
 ---
@@ -79,10 +58,3 @@ data-vertical="\n--\n">
 ```
 
 ---
-
-
-`<iframe>`で埋め込みしたいときなどは
-
-おとなしくHTML使ってね！
-
-その他詳細な使い方はGitHubの[README.md](https://github.com/hakimel/reveal.js/)を参照
