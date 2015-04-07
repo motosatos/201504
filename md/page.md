@@ -42,19 +42,82 @@
 
 --
 
+#### 構造と見た目の分離
+
+コンポーネントの基本構造と具体的なルール機能を分離するということ 
+
+--
+
+#### 番外 IDセレクタはよくない
+
++ id *属性* はいいんだぞ！
+ - ページ内リンクの識別子
+ - JSのフック 
+
+--
+
+#### コンテナーとコンテンツを分離
+
+場所に依存しないセレクタを書く
 
 ---
 
-Markdownだけ別ファイルにしておけば<br>
-index.htmlは使いまわせる！
+### 今回、リソース不足により触れないが、SMACSSも重要
+### 一応、簡単な棲み分け
+
+#### OOCSS - 考え方/アイデア
+#### SMACSS - コーディングルール
+#### BEM - ツールであり、命名規則
+
+---
+
+### 3-3. BEM
+
+--
+
+#### .Block__Element_Modifier
+
+オブジェクト/コンポーネントを3つに分類して命名する
+
+--
+
++ マークアップを見れば、クラスの機能/構造がつかめる
++ ユニークさが保たれるので、スタイルが汚染されない(他に影響しない)
+
+--
+
+#### MindBEMding
+
+BEM的な命名規則のこと
+
++ BEMの命名規則のエッセンスを取り入れつつ、命名そのものは開発社の方で定義せい
++ 重要なのは、その定義したルールが全体を通して一貫していること
+
+--
+
+お約束で、Element(アンスコ*2 __), Modifier(ハイフン*2 --)というルール
 
 ```html
-<section data-markdown="./md/firstpage.md"
-data-separator="\n---\n$"
-data-vertical="\n--\n">
-<script type="text/template">
-< / script>
-</section>
+block
+block__element
+block__element--modifier
+block--modifier
+block--modifier__element
 ```
 
----
+--
+
+htmlで、
+```html
+<div class="block">
+    <div class="block__element"></div>
+    <div class="block__element block__element--modifier"></div>
+</div>
+<div class="block block--modifier">
+    <div class="block__element block--modifier__element"></div>
+</div>
+```
+
+--
+
+ハイフンひとつは、以上のこと以外の用途(ex.複数単語の区切り)
